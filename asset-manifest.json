@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/hire-cars-here/static/css/main.7acaea2f.css",
-    "main.js": "/hire-cars-here/static/js/main.07d3183d.js",
+    "main.css": "/hire-cars-here/static/css/main.2f6ba41b.css",
+    "main.js": "/hire-cars-here/static/js/main.537a5cb7.js",
+    "static/media/logo192.png": "/hire-cars-here/static/media/logo192.c1bb91ff61f71eb7bb50.png",
     "index.html": "/hire-cars-here/index.html",
-    "main.7acaea2f.css.map": "/hire-cars-here/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/hire-cars-here/static/js/main.07d3183d.js.map"
+    "main.2f6ba41b.css.map": "/hire-cars-here/static/css/main.2f6ba41b.css.map",
+    "main.537a5cb7.js.map": "/hire-cars-here/static/js/main.537a5cb7.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.2f6ba41b.css",
+    "static/js/main.537a5cb7.js"
   ]
 }
