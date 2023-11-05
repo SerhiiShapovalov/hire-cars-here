@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import catalogSlice from './adverts/slice';
+import { catalogReducer } from './adverts/slice';
 import {
   persistStore,
   FLUSH,
@@ -12,7 +12,7 @@ import {
 
 export const store = configureStore({
   reducer: {
-    adverts: catalogSlice,
+    adverts: catalogReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

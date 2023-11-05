@@ -117,4 +117,4 @@ const catalogSlice = createSlice({
 export const { setCurrentPage } = catalogSlice.actions;
 export const { setMinPrice, setMaxPrice } = catalogSlice.actions;
 
-export default catalogSlice.reducer;
+export const catalogReducer = catalogSlice.reducer;
