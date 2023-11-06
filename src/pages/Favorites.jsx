@@ -1,7 +1,8 @@
 import { CarList } from 'components/CarList/CarList';
 import { selectCarList } from '../redux/adverts/selectors';
 import { loadFavorites } from '../redux/adverts/operations';
-import { useDispatch, useSelector, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 export const Favorites = () => {
   const dispatch = useDispatch();
