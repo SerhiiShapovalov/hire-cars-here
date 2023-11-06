@@ -1,10 +1,10 @@
-import { CarList } from 'components/CarList/CarList';
+import CarList from '../components/CarList/CarList';
 import { selectCarList } from '../redux/adverts/selectors';
 import { loadFavorites } from '../redux/adverts/operations';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-export const Favorites = () => {
+const Favorites = () => {
   const dispatch = useDispatch();
   const carList = useSelector(selectCarList);
 
@@ -22,3 +22,5 @@ export const Favorites = () => {
     </>
   );
 };
+
+export default Favorites;

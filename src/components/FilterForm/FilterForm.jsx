@@ -1,5 +1,5 @@
 import { fetchPriceRange, fetchCarList } from '../../redux/adverts/slice';
-import { DropList } from 'components/DropList/DropList';
+import DropList from '../DropList/DropList';
 import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Notiflix from 'notiflix';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFavorite } from '../../redux/adverts/slice';
 import { selectCarById } from '../../redux/adverts/selectors';
-import  MoreInfoModal  from 'components/MoreInfoModal/MoreInfoModal';
+import MoreInfoModal from '../MoreInfoModal/MoreInfoModal';
 import Notiflix from 'notiflix';
 import { ReactComponent as HeartIcon } from '../UI/img/heart.svg';
 import {
@@ -15,7 +15,7 @@ import {
   Wrapper,
 } from './CarCard.styled';
 
-export const CarCard = ({ carId }) => {
+const CarCard = ({ carId }) => {
   const dispatch = useDispatch();
   const car = useSelector(state => selectCarById(state, carId));
 
@@ -72,3 +72,5 @@ export const CarCard = ({ carId }) => {
     </Wrapper>
   );
 };
+
+export default CarCard;

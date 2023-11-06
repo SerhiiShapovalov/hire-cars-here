@@ -1,7 +1,7 @@
-import { CarCard } from 'components/CarCard/CarCard';
+import CarCard from '../CarCard/CarCard';
 import { CardList } from './CarListStyled';
 
-export const CarList = ({ data = [] }) => {
+const CarList = ({ data = [] }) => {
   return (
     <>
       <CardList>
@@ -16,3 +16,5 @@ export const CarList = ({ data = [] }) => {
     </>
   );
 };
+
+export default CarList;
