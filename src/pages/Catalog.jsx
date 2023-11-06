@@ -7,7 +7,7 @@ import {
 } from '../redux/adverts/selectors';
 import { setCurrentPage } from '../redux/adverts/slice';
 import { loadMoreCars } from '../redux/adverts/operations';
-import { FilterForm } from '../components/FilterForm/FilterForm';
+import  FilterForm  from '../components/FilterForm/FilterForm';
 import { CarList } from '../components/CarList/CarList';
 import { LinkButton } from '../components/MoreInfoModal/MoreInfoModal.styled';
 
