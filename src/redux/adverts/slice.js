@@ -6,7 +6,7 @@ export const fetchCarList = createAsyncThunk(
   async (page, { getState }) => {
     const { limit } = getState().adverts;
     const response = await axios.get(
-      `https://64d66ed22a017531bc12a15a.mockapi.io/api/adverts?page=${page}&limit=${limit}`
+      `https://64d66ed22a017531bc12a15a.mockapi.io/adverts?page=${page}&limit=${limit}`
     );
     return response.data;
   }
@@ -16,7 +16,7 @@ export const fetchFavorites = createAsyncThunk(
   'favorites/fetchFavorites',
   async () => {
     const response = await axios.get(
-      'https://64d66ed22a017531bc12a15a.mockapi.io/api/adverts?favorite=true'
+      'https://64d66ed22a017531bc12a15a.mockapi.io/adverts?favorite=true'
     );
     return response.data;
   }

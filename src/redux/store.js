@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { catalogReducer } from './adverts/slice';
 import {
   persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,10 +10,20 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+const persistConfig = {
+  key: 'root', // Ключ, под которым данные будут храниться в хранилище
+  storage,
+  whitelist: ['adverts'], // Список редьюсеров, которые вы хотите сохранить
+};
+
+// Создание редьюсера, который включает поддержку Redux Persist
+const persistedReducer = persistReducer(persistConfig, catalogReducer);
 
 export const store = configureStore({
   reducer: {
-    adverts: catalogReducer,
+    adverts: persistedReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
