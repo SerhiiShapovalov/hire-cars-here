@@ -13,12 +13,11 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: 'root', // Ключ, под которым данные будут храниться в хранилище
+  key: 'root',
   storage,
-  whitelist: ['adverts'], // Список редьюсеров, которые вы хотите сохранить
+  whitelist: ['adverts'],
 };
 
-// Создание редьюсера, который включает поддержку Redux Persist
 const persistedReducer = persistReducer(persistConfig, catalogReducer);
 
 export const store = configureStore({
