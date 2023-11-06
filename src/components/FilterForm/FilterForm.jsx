@@ -1,6 +1,6 @@
 import { fetchPriceRange, fetchCarList } from '../../redux/adverts/slice';
 import { DropList } from 'components/DropList/DropList';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
 import data from '../../data/makes.json';
@@ -13,17 +13,21 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
   const [milesFrom, setMilesFrom] = useState('');
   const [milesTo, setMilesTo] = useState('');
   const [allData, setAllData] = useState([]);
+  const dispatch = useDispatch();
   const state = useSelector(state => state.adverts);
 
-  const filterCars = car => {
-    const isBrandMatch = !brand || car.make === brand;
-    const isPriceMatch = !price || car.rentalPrice <= price;
-    const isMilesFromMatch = !milesFrom || car.mileage >= milesFrom;
-    const isMilesToMatch = !milesTo || car.mileage <= milesTo;
-    return isBrandMatch && isPriceMatch && isMilesFromMatch && isMilesToMatch;
-  };
+  const filterCars = useCallback(
+    car => {
+      const isBrandMatch = !brand || car.make === brand;
+      const isPriceMatch = !price || car.rentalPrice <= price;
+      const isMilesFromMatch = !milesFrom || car.mileage >= milesFrom;
+      const isMilesToMatch = !milesTo || car.mileage <= milesTo;
+      return isBrandMatch && isPriceMatch && isMilesFromMatch && isMilesToMatch;
+    },
+    [brand, price, milesFrom, milesTo]
+  );
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const page = 1;
       await dispatch(fetchCarList(page));
@@ -31,11 +35,9 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
     } catch (error) {
       Notiflix.Notify.failure('Error when getting a list of available cars');
     }
-  };
+  }, [dispatch, state.carList]);
 
-  const dispatch = useDispatch();
-
-  const getPriceDropList = async () => {
+  const getPriceDropList = useCallback(async () => {
     try {
       await dispatch(fetchPriceRange());
       const { minPrice, maxPrice } = state;
@@ -49,7 +51,7 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
     } catch (error) {
       Notiflix.Notify.failure('Error while retrieving price data');
     }
-  };
+  }, [dispatch, state]);
 
   const formattedNumber = number => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -73,8 +75,11 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
 
   useEffect(() => {
     fetchData();
+  }, [fetchData]);
+
+  useEffect(() => {
     getPriceDropList();
-  }, [dispatch, state, fetchData, getPriceDropList]);
+  }, [getPriceDropList]);
 
   const OnButtonClick = async event => {
     event.preventDefault();
