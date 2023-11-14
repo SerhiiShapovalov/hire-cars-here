@@ -45,6 +45,7 @@ const Layout = () => {
           </Suspense>
         </Container>
       </main>
+      <footer>Created with 😳 in 2023</footer>
     </>
   );
 };

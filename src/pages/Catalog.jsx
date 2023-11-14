@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectCarList,
@@ -18,14 +18,16 @@ const Catalog = () => {
   const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
-    if (carList.length > 0) {
-      dispatch(setCurrentPage(currentPage + 1));
-    }
-  }, [carList, dispatch, currentPage]);
+    // Add any additional logic here that should run when carList changes
+    console.log('CarList has been updated:', carList);
+  }, [carList]);
 
-  useEffect(() => {
-    dispatch(loadMoreCars());
-  }, [currentPage, dispatch]);
+  const loadMore = useCallback(() => {
+    if (!isLoading) {
+      dispatch(setCurrentPage(currentPage + 1));
+      dispatch(loadMoreCars());
+    }
+  }, [dispatch, currentPage, isLoading]);
 
   return (
     <>
@@ -33,7 +35,7 @@ const Catalog = () => {
       {!isLoading ? <CarList data={carList} /> : <div>Loading...</div>}
 
       {!isLoading && (
-        <LinkButton type="button" onClick={() => dispatch(loadMoreCars())}>
+        <LinkButton type="button" onClick={loadMore}>
           Load More
         </LinkButton>
       )}

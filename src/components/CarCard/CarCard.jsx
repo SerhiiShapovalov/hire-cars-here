@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { changeFavorite } from '../../redux/adverts/slice';
-import { selectCarById } from '../../redux/adverts/selectors';
+// import { selectCarById } from '../../redux/adverts/selectors';
 import MoreInfoModal from '../MoreInfoModal/MoreInfoModal';
 import Notiflix from 'notiflix';
 import { ReactComponent as HeartIcon } from '../UI/img/heart.svg';
@@ -15,9 +15,14 @@ import {
   Wrapper,
 } from './CarCard.styled';
 
-const CarCard = ({ carId }) => {
+const CarCard = ({ car }) => {
   const dispatch = useDispatch();
-  const car = useSelector(state => selectCarById(state, carId));
+
+  const [showModal, setShowModal] = useState(false);
+
+  if (!car) {
+    return null;
+  }
 
   const {
     img,
@@ -33,9 +38,9 @@ const CarCard = ({ carId }) => {
     favorite,
     functionalities,
   } = car;
-  const [, city, country] = address.split(', ');
-  const [functional] = functionalities;
-  const [showModal, setShowModal] = useState(false);
+
+  const [, city, country] = address ? address.split(', ') : ['', ''];
+  const [functional] = functionalities || [''];
 
   const onShowModal = () => {
     setShowModal(state => !state);
@@ -46,30 +51,32 @@ const CarCard = ({ carId }) => {
   };
 
   return (
-    <Wrapper w="274px" relative>
-      <Image src={img} alt={description} />
-      {favorite && <span>Favorite</span>}
-      <div flex jc="space-between">
-        <CarCardText>
-          {make} <Span>{model}</Span>, {year}
-        </CarCardText>
-      </div>
-      <CarCardText>${rentalPrice}</CarCardText>
-      <CarCardSecondText>
-        {city} | {country} | {rentalCompany} | {type} | {make} | {id} |{' '}
-        {functional}
-      </CarCardSecondText>
+    <>
+      <Wrapper w="274px" relative>
+        <Image src={img} alt={description} />
+        {favorite && <span>Favorite</span>}
+        <div flex jc="space-between">
+          <CarCardText>
+            {make} <Span>{model}</Span>, {year}
+          </CarCardText>
+        </div>
+        <CarCardText>${rentalPrice}</CarCardText>
+        <CarCardSecondText>
+          {city} | {country} | {rentalCompany} | {type} | {make} | {id} |{' '}
+          {functional}
+        </CarCardSecondText>
+        <Button type="button" onClick={onShowModal}>
+          Learn more
+        </Button>
+        <HeartIconButton type="button" onClick={handleFavorite}>
+          {favorite
+            ? Notiflix.Notify.success('Remove from Favorites')
+            : Notiflix.Notify.success('Add to Favorites')}
+          <HeartIcon />
+        </HeartIconButton>
+      </Wrapper>
       {showModal && <MoreInfoModal onActive={onShowModal} data={car} />}
-      <Button type="button" onClick={onShowModal}>
-        Learn more
-      </Button>
-      <HeartIconButton type="button" onClick={handleFavorite}>
-        {favorite
-          ? Notiflix.Notify.success('Remove from Favorites')
-          : Notiflix.Notify.success('Add to Favorites')}
-        <HeartIcon />
-      </HeartIconButton>
-    </Wrapper>
+    </>
   );
 };
 

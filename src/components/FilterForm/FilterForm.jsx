@@ -1,77 +1,57 @@
-import { fetchPriceRange, fetchCarList } from '../../redux/adverts/slice';
-import DropList from '../DropList/DropList';
-import { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, Form, FormField, Input, Label } from './FilterForm.styled';
+import DropList from '../DropList/DropList';
+import {
+  fetchCarList,
+  fetchPriceRange,
+  setBrand,
+  setPriceRange,
+} from '../../redux/adverts/slice';
 import Notiflix from 'notiflix';
 import data from '../../data/makes.json';
-import { Button, Form, FormField, Input, Label } from './FilterForm.styled';
 
 const FilterForm = ({ setFilteredData, isFilter }) => {
-  const [priceData, setPriceData] = useState([]);
-  const [price, setPrice] = useState('');
-  const [brand, setBrand] = useState('');
   const [milesFrom, setMilesFrom] = useState('');
   const [milesTo, setMilesTo] = useState('');
-  const [allData, setAllData] = useState([]);
   const dispatch = useDispatch();
-  const state = useSelector(state => state.adverts);
+
+  const brand = useSelector(state => state.brand);
+  const minPrice = useSelector(state => state.minPrice);
+  const maxPrice = useSelector(state => state.maxPrice);
+  const carList = useSelector(state => state.carList);
+  const priceData = useSelector(state => state.priceData);
 
   const filterCars = useCallback(
     car => {
       const isBrandMatch = !brand || car.make === brand;
-      const isPriceMatch = !price || car.rentalPrice <= price;
+      const isPriceMatch =
+        (!minPrice || car.rentalPrice >= minPrice) &&
+        (!maxPrice || car.rentalPrice <= maxPrice);
       const isMilesFromMatch = !milesFrom || car.mileage >= milesFrom;
       const isMilesToMatch = !milesTo || car.mileage <= milesTo;
       return isBrandMatch && isPriceMatch && isMilesFromMatch && isMilesToMatch;
     },
-    [brand, price, milesFrom, milesTo]
+    [brand, minPrice, maxPrice, milesFrom, milesTo]
   );
 
   const fetchData = useCallback(async () => {
     try {
       const page = 1;
       await dispatch(fetchCarList(page));
-      setAllData(state.carList);
+      Notiflix.Notify.success('List of available cars loaded successfully');
     } catch (error) {
       Notiflix.Notify.failure('Error when getting a list of available cars');
     }
-  }, [dispatch, state.carList]);
+  }, [dispatch]);
 
   const getPriceDropList = useCallback(async () => {
     try {
       await dispatch(fetchPriceRange());
-      const { minPrice, maxPrice } = state;
-
-      let arr = [];
-      for (let i = minPrice; i <= maxPrice; i += 10) {
-        arr.push(i);
-      }
-
-      setPriceData(arr);
     } catch (error) {
       Notiflix.Notify.failure('Error while retrieving price data');
     }
-  }, [dispatch, state]);
-
-  const formattedNumber = number => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
-
-  const onChangePrice = value => {
-    setPrice(value);
-  };
-
-  const onChangeBrand = value => {
-    setBrand(value);
-  };
-
-  const onChangeMilesFrom = event => {
-    setMilesFrom(onlyDigit(event.currentTarget.value));
-  };
-
-  const onChangeMilesTo = event => {
-    setMilesTo(onlyDigit(event.currentTarget.value));
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     fetchData();
@@ -81,26 +61,40 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
     getPriceDropList();
   }, [getPriceDropList]);
 
+  const onChangeMilesFrom = event => {
+    setMilesFrom(event.currentTarget.value);
+  };
+
+  const onChangeMilesTo = event => {
+    setMilesTo(event.currentTarget.value);
+  };
+
+  const onBrandChange = value => {
+    dispatch(setBrand(value));
+  };
+
+  const onPriceRangeChange = value => {
+    dispatch(setPriceRange(value));
+  };
+
   const OnButtonClick = async event => {
     event.preventDefault();
-    const isFilterExists = brand || price || milesFrom || milesTo;
+    const isFilterExists =
+      brand || minPrice || maxPrice || milesFrom || milesTo;
 
     if (!isFilterExists) {
       setFilteredData([]);
       isFilter(false);
       return;
     }
+
     isFilter(true);
     try {
-      const filteredData = allData.filter(filterCars);
+      const filteredData = carList.filter(filterCars);
       setFilteredData(filteredData);
     } catch (error) {
       Notiflix.Notify.failure('Error when filtering data');
     }
-  };
-
-  const onlyDigit = value => {
-    return value?.match(/\d+/g)?.join('') || '';
   };
 
   return (
@@ -111,7 +105,7 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
           className="brand"
           data={data}
           placeholder="Enter the text"
-          onChange={onChangeBrand}
+          onChange={onBrandChange}
         />
       </FormField>
       <FormField>
@@ -120,7 +114,7 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
           className="price"
           data={priceData}
           placeholder="To $"
-          onChange={onChangePrice}
+          onChange={onPriceRangeChange}
         />
       </FormField>
       <FormField>
@@ -130,14 +124,14 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
             className="right"
             type="text"
             placeholder="From"
-            value={`From ${formattedNumber(milesFrom)}`}
+            value={milesFrom}
             onChange={onChangeMilesFrom}
           />
           <Input
             className="left"
             type="text"
             placeholder="To"
-            value={`To ${formattedNumber(milesTo)}`}
+            value={milesTo}
             onChange={onChangeMilesTo}
           />
         </div>

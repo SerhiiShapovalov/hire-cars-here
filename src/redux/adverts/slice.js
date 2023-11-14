@@ -39,7 +39,7 @@ export const changeFavorite = createAsyncThunk(
         { favorite: !car.favorite }
       );
       const updatedCar = response.data;
-      dispatch(updatedCar(updatedCar));
+      dispatch(setFavorite(updatedCar));
     } catch (error) {}
   }
 );
@@ -71,6 +71,7 @@ const catalogSlice = createSlice({
     isLoading: false,
     minPrice: 0,
     maxPrice: 0,
+    brand: '',
   },
   reducers: {
     setCurrentPage: (state, action) => {
@@ -81,6 +82,20 @@ const catalogSlice = createSlice({
     },
     setMaxPrice: (state, action) => {
       state.maxPrice = action.payload;
+    },
+    setBrand: (state, action) => {
+      state.brand = action.payload;
+    },
+    setPriceRange: (state, action) => {
+      state.minPrice = action.payload.minPrice;
+      state.maxPrice = action.payload.maxPrice;
+    },
+    setFavorite: (state, action) => {
+      const updatedCar = action.payload;
+      const index = state.carList.findIndex(car => car.id === updatedCar.id);
+      if (index !== -1) {
+        state.carList[index] = updatedCar;
+      }
     },
   },
   extraReducers: builder => {
@@ -114,7 +129,13 @@ const catalogSlice = createSlice({
   },
 });
 
-export const { setCurrentPage } = catalogSlice.actions;
-export const { setMinPrice, setMaxPrice } = catalogSlice.actions;
+export const {
+  setCurrentPage,
+  setMinPrice,
+  setMaxPrice,
+  setBrand,
+  setPriceRange,
+  setFavorite,
+} = catalogSlice.actions;
 
 export const catalogReducer = catalogSlice.reducer;
