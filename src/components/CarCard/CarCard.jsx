@@ -42,8 +42,12 @@ const CarCard = ({ car }) => {
   const [, city, country] = address ? address.split(', ') : ['', ''];
   const [functional] = functionalities || [''];
 
-  const onShowModal = () => {
-    setShowModal(state => !state);
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   const handleFavorite = () => {
@@ -65,7 +69,7 @@ const CarCard = ({ car }) => {
           {city} | {country} | {rentalCompany} | {type} | {make} | {id} |{' '}
           {functional}
         </CarCardSecondText>
-        <Button type="button" onClick={onShowModal}>
+        <Button type="button" onClick={openModal}>
           Learn more
         </Button>
         <HeartIconButton type="button" onClick={handleFavorite}>
@@ -75,7 +79,7 @@ const CarCard = ({ car }) => {
           <HeartIcon />
         </HeartIconButton>
       </Wrapper>
-      {showModal && <MoreInfoModal onActive={onShowModal} data={car} />}
+      {showModal && <MoreInfoModal onClose={closeModal} data={car} />}
     </>
   );
 };

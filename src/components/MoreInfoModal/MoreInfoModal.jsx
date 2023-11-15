@@ -5,13 +5,15 @@ import {
 } from '../CarCard/CarCard.styled';
 import Modal from '../Modal/Modal';
 import {
+  ButtonCloseWrap,
+  CloseIcon,
   Condition,
   ConditionContainer,
   Link,
   MoreInfoWrapper,
 } from './MoreInfoModal.styled';
 
-const MoreInfoModal = ({ onActive, data }) => {
+const MoreInfoModal = ({ onClose, onActive, data }) => {
   const {
     img,
     description,
@@ -34,8 +36,15 @@ const MoreInfoModal = ({ onActive, data }) => {
   };
 
   return (
-    <Modal onActive={onActive}>
+    <Modal onActive={onActive} onClose={onClose}>
       <MoreInfoWrapper>
+        <ButtonCloseWrap
+          type="button"
+          aria-label="close button"
+          onClick={onClose}
+        >
+          <CloseIcon />
+        </ButtonCloseWrap>
         <img src={img} alt={description} />
         <CarCardText>
           {make} <Span>{model}</Span>, {year}

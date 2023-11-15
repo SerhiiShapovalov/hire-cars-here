@@ -6,13 +6,14 @@ export const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(62, 133, 243, 0.05);
-  z-index: 100;
+  background-color: rgba(18, 20, 23, 0.5);
+  z-index: 777;
+  overflow-y: auto;
 `;
 
 export const ModalDiv = styled.div`
   position: absolute;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
 `;

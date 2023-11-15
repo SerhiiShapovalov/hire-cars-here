@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ReactComponent as IconClose } from '../UI/img/x-close.svg';
+
 export const MoreInfoWrapper = styled.div`
   width: 541px;
   padding: 40px;
@@ -88,5 +90,28 @@ export const LinkButton = styled.button`
   &:hover,
   &:focus {
     color: #0b44cd;
+  }
+`;
+
+export const ButtonCloseWrap = styled.button`
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+export const CloseIcon = styled(IconClose)`
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  transition: stroke 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  stroke: rgba(18, 20, 23, 1);
+
+  &:hover,
+  &:focus {
+    stroke: rgba(11, 68, 205, 1);
   }
 `;
