@@ -95,9 +95,9 @@ export const LinkButton = styled.button`
 
 export const ButtonCloseWrap = styled.button`
   position: absolute;
-  top: 14px;
-  right: 14px;
-  border-radius: 50%;
+  top: 16px;
+  right: 16px;
+  padding: 0;
   border: none;
   background-color: transparent;
   cursor: pointer;
