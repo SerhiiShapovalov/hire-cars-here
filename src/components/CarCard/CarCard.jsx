@@ -4,10 +4,11 @@ import { changeFavorite } from '../../redux/adverts/slice';
 // import { selectCarById } from '../../redux/adverts/selectors';
 import MoreInfoModal from '../MoreInfoModal/MoreInfoModal';
 import Notiflix from 'notiflix';
-import { ReactComponent as HeartIcon } from '../UI/img/heart.svg';
+
 import {
   Button,
   HeartIconButton,
+  IconHeart,
   Image,
   CarCardText,
   CarCardSecondText,
@@ -73,12 +74,12 @@ const CarCard = ({ car }) => {
           Learn more
         </Button>
         <HeartIconButton type="button" onClick={handleFavorite}>
-          {favorite
-            ? Notiflix.Notify.success('Remove from Favorites')
-            : Notiflix.Notify.success('Add to Favorites')}
-          <HeartIcon />
+          <IconHeart />
         </HeartIconButton>
       </Wrapper>
+      {favorite
+        ? Notiflix.Notify.success('Remove from Favorites')
+        : Notiflix.Notify.success('Add to Favorites')}
       {showModal && <MoreInfoModal onClose={closeModal} data={car} />}
     </>
   );

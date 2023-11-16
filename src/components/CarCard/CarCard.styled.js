@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as HeartIcon } from '../UI/img/heart.svg';
 
 export const Image = styled.img`
   width: 274px;
@@ -18,8 +19,31 @@ export const HeartIconButton = styled.button`
   position: absolute;
   top: 15px;
   right: 15px;
-  stroke: white;
+  padding: 0;
   cursor: pointer;
+  background: none;
+  border: none;
+
+  // &.favorite {
+  //   stroke: #3470ff;
+  //   fill: #3470ff;
+  // }
+`;
+
+export const IconHeart = styled(HeartIcon)`
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  transition: stroke 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  stroke: white;
+  fill: none;
+
+  &:hover,
+  &:focus {
+    stroke: #3470ff;
+    fill: #3470ff;
+  }
 
   &.favorite {
     stroke: #3470ff;
