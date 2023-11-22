@@ -1,6 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Header = styled.header`
   position: fixed;
   display: flex;
@@ -14,7 +20,7 @@ export const Header = styled.header`
   background: #040003;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-    
+
   img {
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -24,6 +30,10 @@ export const Header = styled.header`
       transform: scale(1.1);
     }
   }
+`;
+
+export const Main = styled.main`
+  flex: 1;
 `;
 
 export const NavList = styled.ul`
@@ -51,4 +61,16 @@ export const CurrentLink = styled(NavLink)`
   a.active {
     color: #3470ff;
   }
+`;
+
+export const Footer = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: 400;
+  height: 40px;
+  line-height: 1.5;
+  color: rgb(18 20 23 / 0.5);
 `;

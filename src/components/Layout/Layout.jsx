@@ -1,7 +1,14 @@
 import React, { Suspense } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Container } from '../Container/Container';
-import { Header, NavList, CurrentLink } from './Layout.styled';
+import {
+  Wrapper,
+  Header,
+  Main,
+  NavList,
+  CurrentLink,
+  Footer,
+} from './Layout.styled';
 import logo192 from '../../components/UI/img/logo192.png';
 
 const Layout = () => {
@@ -12,7 +19,7 @@ const Layout = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <Header>
         <Container>
           <nav
@@ -38,15 +45,15 @@ const Layout = () => {
           </nav>
         </Container>
       </Header>
-      <main>
+      <Main>
         <Container>
           <Suspense>
             <Outlet />
           </Suspense>
         </Container>
-      </main>
-      <footer>Created with 😳 in 2023</footer>
-    </>
+      </Main>
+      <Footer>Created with 😳 in 2023</Footer>
+    </Wrapper>
   );
 };
 
