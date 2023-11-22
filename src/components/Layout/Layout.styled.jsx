@@ -66,8 +66,7 @@ export const CurrentLink = styled(NavLink)`
 export const Footer = styled.footer`
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  justify-content: center;  
   font-size: 12px;
   font-weight: 400;
   height: 40px;

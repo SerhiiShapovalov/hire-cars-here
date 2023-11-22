@@ -24,7 +24,7 @@ export const HeartIconButton = styled.button`
   background: none;
   border: none;
 
-  // &.favorite {
+  // &.isFavorite {
   //   stroke: #3470ff;
   //   fill: #3470ff;
   // }
@@ -45,13 +45,15 @@ export const IconHeart = styled(HeartIcon)`
     fill: #3470ff;
   }
 
-  &.favorite {
+  &.isFavorite {
     stroke: #3470ff;
     fill: #3470ff;
   }
 `;
 
-export const CarCardText = styled.p`
+export const CarCardTextWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin-top: 14px;
   margin-bottom: 8px;
   font-size: 16px;
@@ -62,10 +64,20 @@ export const CarCardText = styled.p`
   overflow: hidden;
 `;
 
+export const CarCardText = styled.p`
+  font-size: 16px;
+  line-height: 1.5;
+`;
+
+export const CarCardPrice = styled.p`
+  font-size: 16px;
+  line-height: 1.5;
+`;
+
 export const CarCardSecondText = styled.p`
   font-size: 12px;
   font-weight: 400;
-  max-height: 40px;
+  height: 40px;
   line-height: calc(18 / 12);
   color: rgb(18 20 23 / 0.5);
   overflow-wrap: break-word;
@@ -78,40 +90,12 @@ export const Span = styled.span`
 `;
 
 export const Wrapper = styled.div`
-  ${props => props.flex && `display: flex;`}
-  ${props => props.block && `display: block;`}
-  ${props => props.inline && `display: inline;`}
-  ${props => props.inBlock && `display: inline-block;`}
-  
-  ${props =>
-    props.jc &&
-    `
-    justify-content: ${props.jc};
-  `}
-
-  ${props =>
-    props.ai &&
-    `
-    align-items: ${props.ai};
-  `}
-
-   ${props =>
-    props.gap &&
-    `
-    gap: ${props.gap};
-  `}
-
-${props => props.w && `width: ${props.w};`}
-${props => props.h && `height: : ${props.h};`}
-${props => props.minW && `min-width: ${props.w};`}
-${props => props.minH && `min-height: ${props.h};`}
-${props => props.maxW && `max-width: ${props.w};`}
-${props => props.maxH && `max-height: ${props.h};`}
-
-
-  ${props => props.outline && `outline: 1px red solid;`}
-
-${props => props.relative && `position: relative;`}
+  position: relative;
+  width: 274px;
+  height: 426px;
+  border-top-radius: 14px;
+  border-bottom-radius: 12px;
+  border: none;
 `;
 
 export const Button = styled.button`
