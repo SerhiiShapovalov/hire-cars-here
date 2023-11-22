@@ -75,7 +75,7 @@ const MoreInfoModal = ({ onClose, onActive, data }) => {
                 Mileage: <Span>{formattedNumber(+mileage)}</Span>
               </Condition>
               <Condition>
-                Price: <Span>{rentalPrice}$</Span>
+                Price: <Span>{rentalPrice}</Span>
               </Condition>
             </ConditionContainer>
           </>
