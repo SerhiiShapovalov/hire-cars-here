@@ -1,23 +1,17 @@
 import CarList from '../components/CarList/CarList';
-import { selectCarList } from '../redux/adverts/selectors';
-import { loadFavorites } from '../redux/adverts/operations';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { selectFavoriteCars } from '../redux/adverts/selectors';
+
+import { useSelector } from 'react-redux';
 
 const Favorites = () => {
-  const dispatch = useDispatch();
-  const carList = useSelector(selectCarList);
-
-  useEffect(() => {
-    dispatch(loadFavorites());
-  }, [dispatch]);
+  const favoriteCars = useSelector(selectFavoriteCars);
 
   return (
     <>
-      {carList.length === 0 ? (
-        <p>Favorite cars have yet to be chosen</p>
+      {favoriteCars.length === 0 ? (
+        <p>Favorite cars have not yet been selected</p>
       ) : (
-        <CarList data={carList} />
+        <CarList data={favoriteCars} />
       )}
     </>
   );

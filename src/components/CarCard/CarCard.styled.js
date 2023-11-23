@@ -108,6 +108,7 @@ export const Button = styled.button`
   height: 44px;
   width: 100%;
   font-weight: 600;
+  cursor: pointer;
   transition: background-color ease-in-out 250ms;
 
   &:hover,

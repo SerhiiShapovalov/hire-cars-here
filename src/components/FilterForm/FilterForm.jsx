@@ -4,9 +4,9 @@ import { Button, Form, FormField, Input, Label } from './FilterForm.styled';
 import DropList from '../DropList/DropList';
 import {
   fetchCarList,
-  fetchPriceRange,
+  // fetchPriceRange,
   setBrand,
-  setPriceRange,
+  // setPriceRange,
 } from '../../redux/adverts/slice';
 import Notiflix from 'notiflix';
 import data from '../../data/makes.json';
@@ -45,21 +45,21 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
     }
   }, [dispatch]);
 
-  const getPriceDropList = useCallback(async () => {
-    try {
-      await dispatch(fetchPriceRange());
-    } catch (error) {
-      Notiflix.Notify.failure('Error while retrieving price data');
-    }
-  }, [dispatch]);
+  // const getPriceDropList = useCallback(async () => {
+  //   try {
+  //     await dispatch(fetchPriceRange());
+  //   } catch (error) {
+  //     Notiflix.Notify.failure('Error while retrieving price data');
+  //   }
+  // }, [dispatch]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  useEffect(() => {
-    getPriceDropList();
-  }, [getPriceDropList]);
+  // useEffect(() => {
+  //   getPriceDropList();
+  // }, [getPriceDropList]);
 
   const onChangeMilesFrom = event => {
     setMilesFrom(event.currentTarget.value);
@@ -73,9 +73,9 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
     dispatch(setBrand(value));
   };
 
-  const onPriceRangeChange = value => {
-    dispatch(setPriceRange(value));
-  };
+  // const onPriceRangeChange = value => {
+  //   dispatch(setPriceRange(value));
+  // };
 
   const OnButtonClick = async event => {
     event.preventDefault();
@@ -114,7 +114,7 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
           className="price"
           data={priceData}
           placeholder="To $"
-          onChange={onPriceRangeChange}
+          // onChange={onPriceRangeChange}
         />
       </FormField>
       <FormField>

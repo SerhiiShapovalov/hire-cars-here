@@ -61,7 +61,7 @@ export const Link = styled.a`
   border-radius: 12px;
   outline: none;
   border: transparent;
-  font-weight: 600;
+  font-weight: 600;  
   transition: background-color ease-in-out 250ms;
 
   &:hover,
@@ -84,8 +84,9 @@ export const LinkButton = styled.button`
   outline: none;
   border: none;
   color: #3470ff;
-  transition: background-color ease-in-out 250ms;
+  cursor: pointer;
   text-align: center;
+  transition: background-color ease-in-out 250ms;
 
   &:hover,
   &:focus {

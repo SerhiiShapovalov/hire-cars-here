@@ -1,4 +1,7 @@
-import React, { useEffect, useCallback } from 'react';
+import React, {
+  // useEffect,
+  useCallback,
+} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectCarList,
@@ -10,6 +13,7 @@ import { loadMoreCars } from '../redux/adverts/operations';
 import FilterForm from '../components/FilterForm/FilterForm';
 import CarList from '../components/CarList/CarList';
 import { LinkButton } from '../components/MoreInfoModal/MoreInfoModal.styled';
+import Loader from '../components/Loader/Loader';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -17,10 +21,10 @@ const Catalog = () => {
   const currentPage = useSelector(selectCurrentPage);
   const isLoading = useSelector(selectIsLoading);
 
-  useEffect(() => {
-    // Add any additional logic here that should run when carList changes
-    console.log('CarList has been updated:', carList);
-  }, [carList]);
+  // useEffect(() => {
+  //   // Add any additional logic here that should run when carList changes
+  //   console.log('CarList has been updated:', carList);
+  // }, [carList]);
 
   const loadMore = useCallback(() => {
     if (!isLoading) {
@@ -32,7 +36,7 @@ const Catalog = () => {
   return (
     <>
       <FilterForm />
-      {!isLoading ? <CarList data={carList} /> : <div>Loading...</div>}
+      {!isLoading ? <CarList data={carList} /> : <Loader />}
 
       {!isLoading && (
         <LinkButton type="button" onClick={loadMore}>
