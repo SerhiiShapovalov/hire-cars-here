@@ -82,21 +82,27 @@ const catalogSlice = createSlice({
     //   state.minPrice = action.payload.minPrice;
     //   state.maxPrice = action.payload.maxPrice;
     // },
+
     setFavorite: (state, action) => {
       const favoriteCar = action.payload;
       const index = state.favoriteCars.findIndex(
         car => car.id === favoriteCar.id
       );
-      if (index !== -1) {
-        state.carList[index] = favoriteCar;
+
+      if (index === -1) {
+        state.favoriteCars.push(favoriteCar);
       }
     },
+
     unsetFavorite: (state, action) => {
       const favoriteCar = action.payload;
       const index = state.favoriteCars.findIndex(
         car => car.id === favoriteCar.id
       );
-      state.favoriteCars.splice(index, 1);
+
+      if (index !== -1) {
+        state.favoriteCars.splice(index, 1);
+      }
     },
   },
   extraReducers: builder => {

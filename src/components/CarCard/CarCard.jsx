@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFavorite, unsetFavorite } from '../../redux/adverts/slice';
 import PropTypes from 'prop-types';
@@ -19,20 +19,6 @@ import {
 } from './CarCard.styled';
 
 const CarCard = ({ car }) => {
-  const dispatch = useDispatch();
-
-  // Move the function inside the component and rename it to useFavoriteCars
-  const useFavoriteCars = () => useSelector(selectFavoriteCars) || [];
-
-  const favoriteCars = useFavoriteCars(); // Use the function directly
-
-  const memoizedFavoriteCars = useMemo(() => favoriteCars, [favoriteCars]);
-
-  const [showModal, setShowModal] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(
-    memoizedFavoriteCars.some(favoriteCar => favoriteCar.id === car.id)
-  );
-
   const {
     id,
     img,
@@ -46,9 +32,26 @@ const CarCard = ({ car }) => {
     type,
     functionalities,
   } = car;
+  const dispatch = useDispatch();
+
+  const favoriteCars = useSelector(selectFavoriteCars) || [];
+
+  const isFavorite = favoriteCars.some(
+    favoriteCar => favoriteCar.id === car.id
+  );
+
+  const handleToggleFavorite = () => {
+    if (isFavorite) {
+      dispatch(unsetFavorite(car));
+    } else {
+      dispatch(setFavorite(car));
+    }
+  };
 
   const [, city, country] = address ? address.split(', ') : ['', ''];
   const [functional] = functionalities || [''];
+
+  const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
     setShowModal(true);
@@ -57,34 +60,6 @@ const CarCard = ({ car }) => {
   const closeModal = () => {
     setShowModal(false);
   };
-
-  // const handleToggleFavorite = () => {
-  //   setIsFavorite(!isFavorite);
-  // };
-
-  const handleToggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-    // Dispatch the action after updating the local state
-    if (!isFavorite) {
-      dispatch(setFavorite(car));
-    } else {
-      dispatch(unsetFavorite(car.id));
-    }
-  };
-
-  useEffect(() => {
-    if (isFavorite) {
-      if (
-        !memoizedFavoriteCars.some(favoriteCar => favoriteCar.id === car.id)
-      ) {
-        dispatch(setFavorite(car));
-      }
-    } else {
-      if (memoizedFavoriteCars.some(favoriteCar => favoriteCar.id === car.id)) {
-        dispatch(unsetFavorite(car.id));
-      }
-    }
-  }, [isFavorite, dispatch, memoizedFavoriteCars, car]);
 
   return (
     <>
@@ -104,13 +79,14 @@ const CarCard = ({ car }) => {
         <Button type="button" onClick={openModal}>
           Learn more
         </Button>
-        <HeartIconButton type="button" onClick={handleToggleFavorite}>
-          {isFavorite ||
-          favoriteCars.some(favoriteCar => favoriteCar.id === car.id) ? (
-            <IconHeart className={isFavorite} />
-          ) : (
-            <IconHeart />
-          )}
+        <HeartIconButton
+          type="button"
+          aria-label="Add to favorites"
+          onClick={handleToggleFavorite}
+        >
+          <IconHeart
+            style={isFavorite ? { stroke: '#0B44CD', fill: '#0B44CD' } : {}}
+          />
         </HeartIconButton>
       </Wrapper>
       {/* {favorite

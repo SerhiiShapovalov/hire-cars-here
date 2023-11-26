@@ -23,11 +23,6 @@ export const HeartIconButton = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-
-  // &.isFavorite {
-  //   stroke: #3470ff;
-  //   fill: #3470ff;
-  // }
 `;
 
 export const IconHeart = styled(HeartIcon)`
@@ -45,10 +40,12 @@ export const IconHeart = styled(HeartIcon)`
     fill: #3470ff;
   }
 
-  &.isFavorite {
+  ${props =>
+    props.isFavorite &&
+    `
     stroke: #3470ff;
     fill: #3470ff;
-  }
+  `}
 `;
 
 export const CarCardTextWrapper = styled.div`

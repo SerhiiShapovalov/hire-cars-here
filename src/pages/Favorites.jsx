@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Favorites = () => {
   const favoriteCars = useSelector(selectFavoriteCars);
+  console.log('favoriteCars:', favoriteCars);
 
   return (
     <>
