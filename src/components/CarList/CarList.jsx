@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import CarCard from '../CarCard/CarCard';
-import { CardList } from './CarListStyled';
+import { CardList } from './CarList.styled';
 
 const CarList = ({ data }) => {
   useEffect(() => {

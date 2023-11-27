@@ -12,7 +12,7 @@ import { setCurrentPage } from '../redux/adverts/slice';
 import { loadMoreCars } from '../redux/adverts/operations';
 import FilterForm from '../components/FilterForm/FilterForm';
 import CarList from '../components/CarList/CarList';
-import { LinkButton } from '../components/MoreInfoModal/MoreInfoModal.styled';
+import { LinkButton } from '../components/LinkButton/LinkButton.styled';
 import Loader from '../components/Loader/Loader';
 
 const Catalog = () => {

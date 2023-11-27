@@ -8,6 +8,10 @@ export const MoreInfoWrapper = styled.div`
   background-color: #fff;
   border-radius: 24px;
 
+  @media (max-width: 768px) {
+    max-width: 320px;
+  }
+
   img {
     width: 100%;
     border-radius: 14px;
@@ -61,7 +65,7 @@ export const Link = styled.a`
   border-radius: 12px;
   outline: none;
   border: transparent;
-  font-weight: 600;  
+  font-weight: 600;
   transition: background-color ease-in-out 250ms;
 
   &:hover,
@@ -71,27 +75,6 @@ export const Link = styled.a`
   text-align: center;
   width: 168px;
   line-height: 44px;
-`;
-
-export const LinkButton = styled.button`
-  display: block;
-  margin-top: 100px;
-  margin-inline: auto;
-  line-height: 24px;
-  font-size: 18px;
-  background-color: transparent;
-  text-decoration: underline;
-  outline: none;
-  border: none;
-  color: #3470ff;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color ease-in-out 250ms;
-
-  &:hover,
-  &:focus {
-    color: #0b44cd;
-  }
 `;
 
 export const ButtonCloseWrap = styled.button`
