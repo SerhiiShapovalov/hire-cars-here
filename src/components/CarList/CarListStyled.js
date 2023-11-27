@@ -6,5 +6,9 @@ export const CardList = styled.ul`
   justify-content: center;
   flex-wrap: wrap;
   row-gap: 50px;
-  column-gap: 29px;  
+  column-gap: 29px;
+
+  .favorites-page & {
+    margin-top: 135px;
+  }
 `;

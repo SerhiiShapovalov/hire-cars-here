@@ -36,16 +36,20 @@ export const IconHeart = styled(HeartIcon)`
 
   &:hover,
   &:focus {
-    stroke: #3470ff;
-    fill: #3470ff;
+    stroke: ${({ isFavorite }) => (isFavorite ? 'white' : '#3470ff')};
+    fill: ${({ isFavorite }) => (isFavorite ? 'none' : '#3470ff')};
   }
 
-  ${props =>
-    props.isFavorite &&
-    `
+  &[data-isfavorite='true'] {
     stroke: #3470ff;
     fill: #3470ff;
-  `}
+
+    &:hover,
+    &:focus {
+      stroke: white;
+      fill: none;
+    }
+  }
 `;
 
 export const CarCardTextWrapper = styled.div`

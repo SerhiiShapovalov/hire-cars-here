@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFavorite, unsetFavorite } from '../../redux/adverts/slice';
 import PropTypes from 'prop-types';
 import { selectFavoriteCars } from '../../redux/adverts/selectors';
+import Notiflix from 'notiflix';
 import MoreInfoModal from '../MoreInfoModal/MoreInfoModal';
 
 import {
@@ -43,8 +44,10 @@ const CarCard = ({ car }) => {
   const handleToggleFavorite = () => {
     if (isFavorite) {
       dispatch(unsetFavorite(car));
+      Notiflix.Notify.success('Remove from Favorites');
     } else {
       dispatch(setFavorite(car));
+      Notiflix.Notify.success('Add to Favorites');
     }
   };
 
@@ -84,14 +87,9 @@ const CarCard = ({ car }) => {
           aria-label="Add to favorites"
           onClick={handleToggleFavorite}
         >
-          <IconHeart
-            style={isFavorite ? { stroke: '#0B44CD', fill: '#0B44CD' } : {}}
-          />
+          <IconHeart data-isfavorite={isFavorite} />
         </HeartIconButton>
-      </Wrapper>
-      {/* {favorite
-        ? Notiflix.Notify.success('Remove from Favorites')
-        : Notiflix.Notify.success('Add to Favorites')} */}
+      </Wrapper>      
       {showModal && <MoreInfoModal onClose={closeModal} data={car} />}
     </>
   );

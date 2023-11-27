@@ -8,13 +8,15 @@ const Favorites = () => {
   console.log('favoriteCars:', favoriteCars);
 
   return (
-    <>
+    <div className="favorites-page">
       {favoriteCars.length === 0 ? (
-        <p>Favorite cars have not yet been selected</p>
+        <p style={{ marginTop: 135, textAlign: 'center' }}>
+          Favorite cars have not yet been selected
+        </p>
       ) : (
         <CarList data={favoriteCars} />
       )}
-    </>
+    </div>
   );
 };
 
