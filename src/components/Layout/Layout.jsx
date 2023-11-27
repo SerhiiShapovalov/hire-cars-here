@@ -27,16 +27,10 @@ const Layout = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              paddingLeft: 20,
-              paddingRight: 20,
+              gap: 8,
             }}
           >
-            <img
-              src={logo192}
-              alt="cars"
-              style={{ height: 75, marginRight: 20, cursor: 'pointer' }}
-              onClick={goToHome}
-            />
+            <img src={logo192} alt="cars" onClick={goToHome} />
             <NavList>
               <CurrentLink to="/">Home</CurrentLink>
               <CurrentLink to="/catalog">Catalog</CurrentLink>

@@ -1,10 +1,22 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Form, FormField, Input, Label } from './FilterForm.styled';
+import {
+  Button,
+  Form,
+  InputWrapper,
+  MobileFormFieldTop,
+  MobileFormFieldBottom,
+  FormField,
+  RightInput,
+  LeftInput,
+  Label,
+  BrandDropListWrapper,
+  PriceDropListWrapper,
+} from './FilterForm.styled';
 import DropList from '../DropList/DropList';
 import {
   fetchCarList,
-  // fetchPriceRange,
+  fetchPriceRange,
   setBrand,
   // setPriceRange,
 } from '../../redux/adverts/slice';
@@ -20,7 +32,7 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
   const minPrice = useSelector(state => state.minPrice);
   const maxPrice = useSelector(state => state.maxPrice);
   const carList = useSelector(state => state.carList);
-  const priceData = useSelector(state => state.priceData);
+  // const priceData = useSelector(state => state.priceData);
 
   const filterCars = useCallback(
     car => {
@@ -45,21 +57,21 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
     }
   }, [dispatch]);
 
-  // const getPriceDropList = useCallback(async () => {
-  //   try {
-  //     await dispatch(fetchPriceRange());
-  //   } catch (error) {
-  //     Notiflix.Notify.failure('Error while retrieving price data');
-  //   }
-  // }, [dispatch]);
+  const getPriceDropList = useCallback(async () => {
+    try {
+      await dispatch(fetchPriceRange());
+    } catch (error) {
+      Notiflix.Notify.failure('Error while retrieving price data');
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  // useEffect(() => {
-  //   getPriceDropList();
-  // }, [getPriceDropList]);
+  useEffect(() => {
+    getPriceDropList();
+  }, [getPriceDropList]);
 
   const onChangeMilesFrom = event => {
     setMilesFrom(event.currentTarget.value);
@@ -99,45 +111,50 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
 
   return (
     <Form onSubmit={OnButtonClick}>
-      <FormField>
-        <Label>Car brand</Label>
-        <DropList
-          className="brand"
-          data={data}
-          placeholder="Enter the text"
-          onChange={onBrandChange}
-        />
-      </FormField>
-      <FormField>
-        <Label>Price/ 1 hour</Label>
-        <DropList
-          className="price"
-          data={priceData}
-          placeholder="To $"
-          // onChange={onPriceRangeChange}
-        />
-      </FormField>
-      <FormField>
-        <Label htmlFor="Miles">Car mileage / km</Label>
-        <div>
-          <Input
-            className="right"
-            type="text"
-            placeholder="From"
-            value={milesFrom}
-            onChange={onChangeMilesFrom}
-          />
-          <Input
-            className="left"
-            type="text"
-            placeholder="To"
-            value={milesTo}
-            onChange={onChangeMilesTo}
-          />
-        </div>
-      </FormField>
+      <MobileFormFieldTop>
+        <FormField>
+          <Label>Car brand</Label>
+          <BrandDropListWrapper>
+            <DropList
+              data={data}
+              placeholder="Enter the text"
+              onChange={onBrandChange}
+            />
+          </BrandDropListWrapper>
+        </FormField>
+        <FormField>
+          <Label>Price/ 1 hour</Label>
+          <PriceDropListWrapper>
+            <DropList
+              data={data}
+              placeholder="To $"
+              // onChange={onPriceRangeChange}
+            />
+          </PriceDropListWrapper>
+        </FormField>
+      </MobileFormFieldTop>
 
-      <Button type="submit">Search</Button>
+      <MobileFormFieldBottom>
+        <FormField>
+          <Label htmlFor="Miles">Car mileage / km</Label>
+          <InputWrapper>
+            <LeftInput
+              type="text"
+              placeholder="From"
+              value={milesFrom}
+              onChange={onChangeMilesFrom}
+            />
+            <RightInput
+              type="text"
+              placeholder="To"
+              value={milesTo}
+              onChange={onChangeMilesTo}
+            />
+          </InputWrapper>
+        </FormField>
+
+        <Button type="submit">Search</Button>
+      </MobileFormFieldBottom>
     </Form>
   );
 };

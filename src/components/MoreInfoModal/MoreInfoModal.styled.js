@@ -8,8 +8,8 @@ export const MoreInfoWrapper = styled.div`
   background-color: #fff;
   border-radius: 24px;
 
-  @media (max-width: 768px) {
-    max-width: 320px;
+  @media (max-width: 767px) {
+    width: 295px;
   }
 
   img {

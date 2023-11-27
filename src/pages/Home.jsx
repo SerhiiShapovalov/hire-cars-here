@@ -14,6 +14,7 @@ const styles = {
     overflow: 'hidden',
   },
   title: {
+    marginTop: 100,
     fontWeight: 500,
     fontSize: 48,
     textAlign: 'center',

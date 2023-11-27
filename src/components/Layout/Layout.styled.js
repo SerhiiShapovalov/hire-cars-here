@@ -14,6 +14,7 @@ export const Header = styled.header`
   justify-content: start;
   top: 0;
   left: 0;
+  padding: 5px 10px;
   width: 100vw;
   height: 85px;
   z-index: 1100;
@@ -23,6 +24,7 @@ export const Header = styled.header`
 
   img {
     cursor: pointer;
+    height: 75px;
     transition: transform 0.3s ease-in-out;
 
     &:hover,
@@ -39,12 +41,21 @@ export const Main = styled.main`
 export const NavList = styled.ul`
   display: flex;
   gap: 15px;
-  padding: 0 15px;
+  // padding: 0 15px;
   font-size: 20px;
   font-weight: 600;
 
   a.active {
     color: #3470ff;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    gap: 8px;
+    font-size: 18px;
   }
 `;
 
