@@ -21,12 +21,12 @@ export const MobileFormFieldTop = styled.div`
   display: flex;
   justify-content: center;
   align-items: end;
-  margin-left: auto;
-  margin-right: auto;
   gap: 18px;
 
   @media (max-width: 767px) {
     gap: 10px;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
@@ -34,12 +34,12 @@ export const MobileFormFieldBottom = styled.div`
   display: flex;
   justify-content: center;
   align-items: end;
-  margin-left: auto;
-  margin-right: auto;
   gap: 18px;
 
   @media (max-width: 767px) {
     gap: 10px;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
@@ -147,6 +147,7 @@ export const BrandDropListWrapper = styled.div`
 
   ${DropListStyle} {
     width: 100%;
+    height: 100%;
   }
 `;
 
@@ -161,5 +162,6 @@ export const PriceDropListWrapper = styled.div`
 
   ${DropListStyle} {
     width: 100%;
+    height: 100%;
   }
 `;
