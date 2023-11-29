@@ -5,10 +5,5 @@ export const CatalogContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* margin: 0 auto; */
-  width: 100%;
-
-  @media screen and (min-width: 1024px) {
-    width: 100vw;
-  }
+  width: 100vw;
 `;

@@ -1,6 +1,6 @@
 import Home from '../pages/Home/Home';
 import Catalog from '../pages/Catalog/Catalog';
-import Favorites from '../pages/Favorites';
+import Favorites from '../pages/Favorites/Favorites';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
 

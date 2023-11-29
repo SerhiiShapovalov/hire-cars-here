@@ -42,7 +42,7 @@ export const Header = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  padding: 5px 10px;
+  padding: 5px 20px;
   display: flex;
   justify-content: space-between;
   width: 100%;

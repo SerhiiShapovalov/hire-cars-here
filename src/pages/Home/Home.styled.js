@@ -2,19 +2,15 @@ import styled from 'styled-components';
 
 export const HomeContainer = styled.div`
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  left: 0;
   background-image: url('https://res.cloudinary.com/dqiappxhh/image/upload/v1699082507/technology-vw-skyscraper-tower-factory-warehouse-deep-autos-production-vehicles-abyss-science-fiction-multi-storey-car-park-electrical-wiring-personal-computer-hardware-autombilbau-1113869_g6io8c.jpg');
   background-size: cover;
   overflow: hidden;
-
-  @media screen and (min-width: 1024px) {
-    width: 100vw;
-  }
 `;
 
 export const HomeTitle = styled.h1`
