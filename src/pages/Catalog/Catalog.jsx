@@ -7,13 +7,14 @@ import {
   selectCarList,
   selectCurrentPage,
   selectIsLoading,
-} from '../redux/adverts/selectors';
-import { setCurrentPage } from '../redux/adverts/slice';
-import { loadMoreCars } from '../redux/adverts/operations';
-import FilterForm from '../components/FilterForm/FilterForm';
-import CarList from '../components/CarList/CarList';
-import { LinkButton } from '../components/LinkButton/LinkButton.styled';
-import Loader from '../components/Loader/Loader';
+} from '../../redux/adverts/selectors';
+import { setCurrentPage } from '../../redux/adverts/slice';
+import { loadMoreCars } from '../../redux/adverts/operations';
+import FilterForm from '../../components/FilterForm/FilterForm';
+import CarList from '../../components/CarList/CarList';
+import { LinkButton } from '../../components/LinkButton/LinkButton.styled';
+import Loader from '../../components/Loader/Loader';
+import { CatalogContainer } from './Catalog.styled';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const Catalog = () => {
   }, [dispatch, currentPage, isLoading]);
 
   return (
-    <>
+    <CatalogContainer>
       <FilterForm />
       {!isLoading ? <CarList data={carList} /> : <Loader />}
 
@@ -43,7 +44,7 @@ const Catalog = () => {
           Load More
         </LinkButton>
       )}
-    </>
+    </CatalogContainer>
   );
 };
 

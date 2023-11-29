@@ -5,15 +5,18 @@ export const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: end;
-  gap: 18px;
+  flex-direction: column;
+  gap: 10px;
   margin-top: 100px;
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
+  padding: 10px 10px 0 10px;
 
-  @media (max-width: 767px) {
-    flex-direction: column;
-    gap: 10px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: start;
+    gap: 18px;
   }
 `;
 
@@ -21,12 +24,14 @@ export const MobileFormFieldTop = styled.div`
   display: flex;
   justify-content: center;
   align-items: end;
-  gap: 18px;
+  gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
 
-  @media (max-width: 767px) {
-    gap: 10px;
-    margin-left: auto;
-    margin-right: auto;
+  @media (min-width: 768px) {
+    gap: 18px;
+    margin-left: 0;
+    margin-right: 0;
   }
 `;
 
@@ -34,24 +39,35 @@ export const MobileFormFieldBottom = styled.div`
   display: flex;
   justify-content: center;
   align-items: end;
-  gap: 18px;
+  gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
 
-  @media (max-width: 767px) {
-    gap: 10px;
-    margin-left: auto;
-    margin-right: auto;
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: end;
+    gap: 18px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 320px;
+  }
+
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
+    gap: 18px;
+    width: auto;
   }
 `;
 
 export const Label = styled.label`
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-size: 14px;
   font-weight: 500;
   line-height: calc(18 / 14);
   color: #8a8a89;
 
-  @media (max-width: 767px) {
-    margin-bottom: 4px;
+  @media (min-width: 768px) {
+    margin-bottom: 8px;
   }
 `;
 
@@ -62,8 +78,8 @@ export const InputWrapper = styled.div`
 
 export const LeftInput = styled.input`
   margin: 0;
-  height: 48px;
-  width: 160px;
+  height: 40px;
+  width: 90px;
   padding: 0 0 0 24px;
   outline: none;
   font-size: 18px;
@@ -79,15 +95,16 @@ export const LeftInput = styled.input`
   border-left: none;
   box-sizing: border-box;
 
-  @media (max-width: 767px) {
-    width: 90px;
-    height: 40px;
+  @media (min-width: 768px) {
+    height: 48px;
+    width: 160px;
   }
 `;
 
 export const RightInput = styled.input`
-  height: 48px;
-  width: 160px;
+  margin: 0;
+  height: 40px;
+  width: 90px;
   padding: 0 0 0 24px;
   outline: none;
   font-size: 18px;
@@ -103,9 +120,9 @@ export const RightInput = styled.input`
   border-left: 1px solid rgb(138 138 137 / 0.2);
   box-sizing: border-box;
 
-  @media (max-width: 767px) {
-    width: 90px;
-    height: 40px;
+  @media (min-width: 768px) {
+    height: 48px;
+    width: 160px;
   }
 `;
 
@@ -122,27 +139,36 @@ export const Button = styled.button`
   border: transparent;
   font-weight: 600;
   transition: background-color ease-in-out 250ms;
-  width: 136px;
-  height: 48px;
+  width: 80px;
+  height: 40px;
 
   &:hover,
   &:focus {
     background-color: #0b44cd;
   }
 
-  @media (max-width: 767px) {
-    width: 80px;
-    height: 40px;
+  @media (min-width: 768px) {
+    width: 136px;
+    height: 48px;
+    margin-left: auto;
+  }
+
+  @media (min-width: 1024px) {
+    margin-left: 0;
   }
 `;
 
 export const BrandDropListWrapper = styled.div`
-  width: 274px;
-  height: 48px;
+  width: 180px;
+  height: 40px;
 
-  @media (max-width: 767px) {
-    width: 180px;
-    height: 40px;
+  @media (min-width: 768px) {
+    width: 225px;
+    height: 48px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 274px;
   }
 
   ${DropListStyle} {
@@ -152,12 +178,12 @@ export const BrandDropListWrapper = styled.div`
 `;
 
 export const PriceDropListWrapper = styled.div`
-  width: 125px;
-  height: 48px;
+  width: 110px;
+  height: 40px;
 
-  @media (max-width: 767px) {
-    width: 110px;
-    height: 40px;
+  @media (min-width: 768px) {
+    width: 125px;
+    height: 48px;
   }
 
   ${DropListStyle} {

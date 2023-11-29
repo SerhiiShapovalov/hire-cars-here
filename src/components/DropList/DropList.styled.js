@@ -10,8 +10,9 @@ export const DropListStyle = styled.select`
   border-radius: 14px;
   border-color: transparent;
   padding-inline: 18px;
+  height: 40px;
 
-  @media (max-width: 767px) {
-    height: 40px;
+  @media (min-width: 768px) {
+    height: 48px;
   }
 `;

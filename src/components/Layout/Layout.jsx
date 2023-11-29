@@ -5,6 +5,7 @@ import {
   Wrapper,
   Header,
   Main,
+  Nav,
   NavList,
   CurrentLink,
   Footer,
@@ -22,21 +23,14 @@ const Layout = () => {
     <Wrapper>
       <Header>
         <Container>
-          <nav
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 8,
-            }}
-          >
+          <Nav>
             <img src={logo192} alt="cars" onClick={goToHome} />
             <NavList>
               <CurrentLink to="/">Home</CurrentLink>
               <CurrentLink to="/catalog">Catalog</CurrentLink>
               <CurrentLink to="/favorites">Favorites</CurrentLink>
             </NavList>
-          </nav>
+          </Nav>
         </Container>
       </Header>
       <Main>

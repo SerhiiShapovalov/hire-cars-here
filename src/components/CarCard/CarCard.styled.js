@@ -94,8 +94,10 @@ export const Wrapper = styled.div`
   position: relative;
   width: 274px;
   height: 426px;
-  border-top-radius: 14px;
-  border-bottom-radius: 12px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
   border: none;
 `;
 
