@@ -11,6 +11,10 @@ export const FavoritesContainer = styled.div`
   @media (min-width: 768px) {
     margin-top: 100px;
   }
+
+  @media (min-width: 1024px) {
+    margin-top: 135px;
+  }
 `;
 
 export const FavoritesText = styled.p`

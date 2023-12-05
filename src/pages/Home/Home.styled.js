@@ -14,6 +14,7 @@ export const HomeContainer = styled.div`
 `;
 
 export const HomeTitle = styled.h1`
+padding: 0 15px;
   margin-top: 100px;
   font-weight: 500px;
   font-size: 48px;
@@ -27,6 +28,7 @@ export const HomeText = styled.p`
   font-size: 18px;
   text-align: center;
   margin: 20px 0;
+  padding: 0 15px;
   background: none;
   position: relative;
   z-index: 1;

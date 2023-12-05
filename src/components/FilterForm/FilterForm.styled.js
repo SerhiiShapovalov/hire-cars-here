@@ -94,10 +94,15 @@ export const LeftInput = styled.input`
   border-bottom: none;
   border-left: none;
   box-sizing: border-box;
+  caret-color: #0b44cd;
 
   @media (min-width: 768px) {
     height: 48px;
     width: 160px;
+  }
+
+  &::placeholder {
+    color: #121417;
   }
 `;
 
@@ -119,10 +124,15 @@ export const RightInput = styled.input`
   border-bottom: none;
   border-left: 1px solid rgb(138 138 137 / 0.2);
   box-sizing: border-box;
+  caret-color: #0b44cd;
 
   @media (min-width: 768px) {
     height: 48px;
     width: 160px;
+  }
+
+  &::placeholder {
+    color: #121417;
   }
 `;
 
@@ -132,6 +142,8 @@ export const FormField = styled.div`
 `;
 
 export const Button = styled.button`
+  width: 80px;
+  height: 40px;
   color: #fff;
   background-color: #3470ff;
   border-radius: 12px;
@@ -139,8 +151,7 @@ export const Button = styled.button`
   border: transparent;
   font-weight: 600;
   transition: background-color ease-in-out 250ms;
-  width: 80px;
-  height: 40px;
+  cursor: pointer;
 
   &:hover,
   &:focus {
