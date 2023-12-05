@@ -8,8 +8,13 @@ export const CardList = styled.ul`
   row-gap: 50px;
   column-gap: 29px;
   margin-bottom: 100px;
+  padding: 0 15px;
 
-  .favorites-page & {
-    margin-top: 135px;
+  @media (min-width: 768px) {
+    padding: 0 20px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 40px;
   }
 `;
