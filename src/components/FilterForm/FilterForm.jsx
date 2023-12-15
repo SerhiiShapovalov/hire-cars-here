@@ -116,6 +116,7 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
           <Label>Car brand</Label>
           <BrandDropListWrapper>
             <DropList
+              className="brand-drop-list"
               data={data}
               placeholder="Enter the text"
               onChange={onBrandChange}
@@ -126,6 +127,7 @@ const FilterForm = ({ setFilteredData, isFilter }) => {
           <Label>Price/ 1 hour</Label>
           <PriceDropListWrapper>
             <DropList
+              className="price-drop-list"
               data={data}
               placeholder="To $"
               // onChange={onPriceRangeChange}

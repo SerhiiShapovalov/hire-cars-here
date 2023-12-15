@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { DropListStyle } from '../DropList/DropList.styled';
 
 export const Form = styled.form`
   display: flex;
@@ -181,11 +180,6 @@ export const BrandDropListWrapper = styled.div`
   @media (min-width: 1024px) {
     width: 274px;
   }
-
-  ${DropListStyle} {
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 export const PriceDropListWrapper = styled.div`
@@ -195,10 +189,5 @@ export const PriceDropListWrapper = styled.div`
   @media (min-width: 768px) {
     width: 125px;
     height: 48px;
-  }
-
-  ${DropListStyle} {
-    width: 100%;
-    height: 100%;
   }
 `;
