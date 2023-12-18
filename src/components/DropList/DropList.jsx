@@ -20,6 +20,7 @@ const DropList = ({ data, placeholder, onChange, className }) => {
     <Select
       options={options}
       isClearable
+      escapeClearsValue
       value={options.find(opt => opt.value === placeholder)}
       onChange={handleChange}
       placeholder={placeholder}

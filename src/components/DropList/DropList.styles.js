@@ -9,11 +9,12 @@ export const getCustomStyles = className => ({
     background: '#f7f7fb',
     borderRadius: '14px',
     borderColor: state.isFocused ? '#0b44cd' : 'transparent',
-    paddingInline: '18px',
+    paddingInline: '10px',
     height: '40px',
     cursor: 'pointer',
     '@media (min-width: 768px)': {
       height: '48px',
+      paddingInline: '18px',
     },
   }),
 

@@ -78,8 +78,8 @@ export const InputWrapper = styled.div`
 export const LeftInput = styled.input`
   margin: 0;
   height: 40px;
-  width: 90px;
-  padding: 0 0 0 24px;
+  width: 80px;
+  padding: 0 0 0 18px;
   outline: none;
   font-size: 18px;
   color: #121417;
@@ -98,6 +98,7 @@ export const LeftInput = styled.input`
   @media (min-width: 768px) {
     height: 48px;
     width: 160px;
+    padding-left: 24px
   }
 
   &::placeholder {
@@ -108,8 +109,8 @@ export const LeftInput = styled.input`
 export const RightInput = styled.input`
   margin: 0;
   height: 40px;
-  width: 90px;
-  padding: 0 0 0 24px;
+  width: 80px;
+  padding: 0 0 0 18px;
   outline: none;
   font-size: 18px;
   color: #121417;
@@ -128,6 +129,7 @@ export const RightInput = styled.input`
   @media (min-width: 768px) {
     height: 48px;
     width: 160px;
+    padding-left: 24px;
   }
 
   &::placeholder {
@@ -169,7 +171,7 @@ export const Button = styled.button`
 `;
 
 export const BrandDropListWrapper = styled.div`
-  width: 180px;
+  width: 160px;
   height: 40px;
 
   @media (min-width: 768px) {
@@ -183,7 +185,7 @@ export const BrandDropListWrapper = styled.div`
 `;
 
 export const PriceDropListWrapper = styled.div`
-  width: 110px;
+  width: 100px;
   height: 40px;
 
   @media (min-width: 768px) {

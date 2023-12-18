@@ -12,9 +12,8 @@ import { setCurrentPage } from '../../redux/adverts/slice';
 import { loadMoreCars } from '../../redux/adverts/operations';
 import FilterForm from '../../components/FilterForm/FilterForm';
 import CarList from '../../components/CarList/CarList';
-import { LinkButton } from '../../components/LinkButton/LinkButton.styled';
 import Loader from '../../components/Loader/Loader';
-import { CatalogContainer } from './Catalog.styled';
+import { CatalogContainer, LinkButton } from './Catalog.styled';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -41,7 +40,7 @@ const Catalog = () => {
 
       {!isLoading && (
         <LinkButton type="button" onClick={loadMore}>
-          Load More
+          Load more
         </LinkButton>
       )}
     </CatalogContainer>

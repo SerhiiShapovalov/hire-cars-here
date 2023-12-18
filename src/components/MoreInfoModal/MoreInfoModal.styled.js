@@ -3,22 +3,25 @@ import styled from 'styled-components';
 import { ReactComponent as IconClose } from '../UI/img/x-close.svg';
 
 export const MoreInfoWrapper = styled.div`
-  width: 541px;
-  padding: 40px;
+  width: 295px;
+  padding: 18px;
   background-color: #fff;
-  border-radius: 24px;
+  border-radius: 18px;
 
-  @media (max-width: 767px) {
-    width: 295px;
+  @media (min-width: 768px) {
+    width: 541px;
+    padding: 40px;
+    border-radius: 24px;
   }
 
   img {
     width: 100%;
     border-radius: 14px;
+    margin-bottom: 14px;
   }
 
   & > .second-text {
-    width: 277px;
+    width: 100%;
     height: 100%;
   }
 
@@ -52,9 +55,14 @@ export const Condition = styled.p`
 
 export const ConditionContainer = styled.div`
   align-items: center;
-  gap: 8px;
+  justify-content: start;
+  gap: 5px;
   display: flex;
   flex-wrap: wrap;
+
+  @media (min-width: 768px) {
+    gap: 8px;
+  }
 `;
 
 export const Link = styled.a`
@@ -67,29 +75,34 @@ export const Link = styled.a`
   border: transparent;
   font-weight: 600;
   transition: background-color ease-in-out 250ms;
+  text-align: center;
+  width: 168px;
+  line-height: 44px;
 
   &:hover,
   &:focus {
     background-color: #0b44cd;
   }
-  text-align: center;
-  width: 168px;
-  line-height: 44px;
 `;
 
 export const ButtonCloseWrap = styled.button`
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 5px;
+  right: 5px;
   padding: 0;
   border: none;
   background-color: transparent;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    top: 16px;
+    right: 16px;
+  }
 `;
 
 export const CloseIcon = styled(IconClose)`
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   padding: 0;
   transition: stroke 300ms cubic-bezier(0.4, 0, 0.2, 1);
   stroke: rgba(18, 20, 23, 1);
@@ -97,5 +110,10 @@ export const CloseIcon = styled(IconClose)`
   &:hover,
   &:focus {
     stroke: rgba(11, 68, 205, 1);
+  }
+
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
   }
 `;

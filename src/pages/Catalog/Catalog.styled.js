@@ -5,5 +5,22 @@ export const CatalogContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* width: 100vw; */
+`;
+
+export const LinkButton = styled.button`
+  margin: 0 auto 150px;
+  padding: 0;
+  line-height: 24px;
+  font-size: 18px;
+  background-color: transparent;
+  text-decoration: underline;
+  border: none;
+  color: #3470ff;
+  cursor: pointer;
+  transition: background-color ease-in-out 250ms;
+
+  &:hover,
+  &:focus {
+    color: #0b44cd;
+  }
 `;
