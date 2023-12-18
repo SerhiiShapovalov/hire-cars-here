@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HomeContainer = styled.div`
   height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,7 @@ export const HomeContainer = styled.div`
 `;
 
 export const HomeTitle = styled.h1`
-padding: 0 15px;
+  padding: 0 15px;
   margin-top: 100px;
   font-weight: 500px;
   font-size: 48px;
@@ -22,6 +22,11 @@ padding: 0 15px;
   position: relative;
   z-index: 1;
   color: #ffffff;
+
+  img {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const HomeText = styled.p`

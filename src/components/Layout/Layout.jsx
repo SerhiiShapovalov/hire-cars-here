@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Container } from '../Container/Container';
 import {
   Wrapper,
   Header,
@@ -22,23 +21,19 @@ const Layout = () => {
   return (
     <Wrapper>
       <Header>
-        <Container>
-          <Nav>
-            <img src={logo192} alt="cars" onClick={goToHome} />
-            <NavList>
-              <CurrentLink to="/">Home</CurrentLink>
-              <CurrentLink to="/catalog">Catalog</CurrentLink>
-              <CurrentLink to="/favorites">Favorites</CurrentLink>
-            </NavList>
-          </Nav>
-        </Container>
+        <Nav>
+          <img src={logo192} alt="cars" onClick={goToHome} />
+          <NavList>
+            <CurrentLink to="/">Home</CurrentLink>
+            <CurrentLink to="/catalog">Catalog</CurrentLink>
+            <CurrentLink to="/favorites">Favorites</CurrentLink>
+          </NavList>
+        </Nav>
       </Header>
       <Main>
-        <Container>
-          <Suspense>
-            <Outlet />
-          </Suspense>
-        </Container>
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </Main>
       <Footer>Created with 😳 in 2023</Footer>
     </Wrapper>
