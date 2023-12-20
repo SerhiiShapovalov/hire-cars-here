@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 export const fetchCarList = createAsyncThunk(
   'adverts/fetchCarList',
@@ -36,6 +37,7 @@ const catalogSlice = createSlice({
     carList: [],
     currentPage: 1,
     limit: 12,
+    endOfCollection: false,
     isLoading: false,
     minPrice: 0,
     maxPrice: 0,
@@ -90,27 +92,33 @@ const catalogSlice = createSlice({
       })
       .addCase(fetchCarList.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.carList = [...state.carList, ...action.payload];
-        state.currentPage++;
+        state.carList = action.payload;
+
+        if (action.payload.length < 12 || action.payload.length === 0) {
+          state.endOfCollection = true;
+          Notiflix.Notify.info(
+            'You have reached the end of the list of car rental offers'
+          );
+        }
       })
       .addCase(fetchCarList.rejected, state => {
         state.isLoading = false;
       })
-    .addCase(fetchPriceRange.pending, (state, action) => {
-      state.minPrice = action.payload.minPrice;
-      state.maxPrice = action.payload.maxPrice;
-      state.loadingPriceRange = false;
-    })
-    .addCase(fetchPriceRange.fulfilled, (state, action) => {
-      state.minPrice = action.payload.minPrice;
-      state.maxPrice = action.payload.maxPrice;
-    })
-    .addCase(fetchPriceRange.rejected, (state, action) => {
-      state.minPrice = 0;
-      state.maxPrice = 0;
-      state.loadingPriceRange = false;
-      state.error = action.error.message;
-    });
+      .addCase(fetchPriceRange.pending, (state, action) => {
+        state.minPrice = action.payload.minPrice;
+        state.maxPrice = action.payload.maxPrice;
+        state.loadingPriceRange = false;
+      })
+      .addCase(fetchPriceRange.fulfilled, (state, action) => {
+        state.minPrice = action.payload.minPrice;
+        state.maxPrice = action.payload.maxPrice;
+      })
+      .addCase(fetchPriceRange.rejected, (state, action) => {
+        state.minPrice = 0;
+        state.maxPrice = 0;
+        state.loadingPriceRange = false;
+        state.error = action.error.message;
+      });
   },
 });
 
