@@ -13,7 +13,7 @@ export const loadMoreCars = () => async (dispatch, getState) => {
         dispatch(setCurrentPage(nextPage));
       } else {
         // Если данных больше нет, скрываем кнопку Load more
-        // (вы можете добавить это действие в ваш срез редуктора)
+        // (можно добавить это действие в срез редуктора)
         // dispatch(setEndOfCollection(true));
       }
     } catch (error) {
